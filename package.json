@@ -1,5 +1,5 @@
 {
-  "name": "mcpx",
+  "name": "mcpwire",
   "version": "0.1.0",
   "description": "The simplest way to connect to MCP servers. Two lines to connect, one line to call tools.",
   "main": "dist/index.js",

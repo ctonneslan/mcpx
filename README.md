@@ -3,7 +3,7 @@
 **The simplest way to connect to MCP servers.** Two lines to connect. One line to call tools.
 
 ```typescript
-import { connect } from "mcpx";
+import { connect } from "mcpwire";
 
 const server = await connect("http://localhost:3000/mcp");
 const result = await server.callTool("search", { query: "hello" });
@@ -26,7 +26,7 @@ The official MCP SDK is powerful but verbose. Connecting to a server takes 30+ l
 ## Install
 
 ```bash
-npm install mcpx
+npm install mcpwire
 ```
 
 ## Quick Start
@@ -34,7 +34,7 @@ npm install mcpx
 ### Connect over HTTP
 
 ```typescript
-import { connect } from "mcpx";
+import { connect } from "mcpwire";
 
 const server = await connect("http://localhost:3000/mcp");
 
@@ -57,7 +57,7 @@ await server.close();
 ### Connect over stdio (local process)
 
 ```typescript
-import { connectStdio } from "mcpx";
+import { connectStdio } from "mcpwire";
 
 const server = await connectStdio("npx", [
   "-y",
@@ -72,7 +72,7 @@ console.log(files);
 ### Use with OpenAI
 
 ```typescript
-import { connect } from "mcpx";
+import { connect } from "mcpwire";
 import OpenAI from "openai";
 
 const server = await connect("http://localhost:3000/mcp");
@@ -97,7 +97,7 @@ for (const call of response.choices[0].message.tool_calls || []) {
 ### Use with Anthropic
 
 ```typescript
-import { connect } from "mcpx";
+import { connect } from "mcpwire";
 import Anthropic from "@anthropic-ai/sdk";
 
 const server = await connect("http://localhost:3000/mcp");
@@ -114,7 +114,7 @@ const response = await anthropic.messages.create({
 ### Discover configured servers
 
 ```typescript
-import { discover } from "mcpx";
+import { discover } from "mcpwire";
 
 // Find servers configured in Claude Desktop, Cursor, etc.
 const servers = discover();
