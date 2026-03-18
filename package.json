@@ -1,6 +1,6 @@
 {
   "name": "mcpwire",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "The simplest way to connect to MCP servers. Two lines to connect, one line to call tools.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -10,6 +10,9 @@
       "import": "./dist/index.js",
       "types": "./dist/index.d.ts"
     }
+  },
+  "bin": {
+    "mcpwire": "dist/cli/index.js"
   },
   "scripts": {
     "build": "tsc",
