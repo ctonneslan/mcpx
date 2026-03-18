@@ -18,6 +18,12 @@ describe("discover", () => {
       expect(server).toHaveProperty("name");
       expect(server).toHaveProperty("transport");
       expect(["http", "sse", "stdio"]).toContain(server.transport);
+      if (server.transport === "http" || server.transport === "sse") {
+        expect(server).toHaveProperty("url");
+      }
+      if (server.transport === "stdio") {
+        expect(server).toHaveProperty("command");
+      }
     }
   });
 });
