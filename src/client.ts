@@ -237,6 +237,59 @@ export class MCPServer {
   }
 
   /**
+   * Get tools formatted for the Vercel AI SDK with automatic execution.
+   * Each tool's execute function calls the MCP server automatically.
+   *
+   * @example
+   * ```typescript
+   * import { generateText } from "ai";
+   * import { openai } from "@ai-sdk/openai";
+   *
+   * const server = await connect("http://localhost:3000/mcp");
+   * const result = await generateText({
+   *   model: openai("gpt-4o"),
+   *   tools: await server.toolsForVercelAI(),
+   *   prompt: "What's the weather?",
+   * });
+   * ```
+   */
+  async toolsForVercelAI(): Promise<
+    Record<
+      string,
+      {
+        description: string;
+        parameters: unknown;
+        execute: (args: Record<string, unknown>) => Promise<string>;
+      }
+    >
+  > {
+    const tools = await this.tools();
+    const result: Record<
+      string,
+      {
+        description: string;
+        parameters: unknown;
+        execute: (args: Record<string, unknown>) => Promise<string>;
+      }
+    > = {};
+
+    for (const t of tools) {
+      const server = this;
+      result[t.name] = {
+        description: t.description || "",
+        parameters: t.inputSchema || { type: "object", properties: {} },
+        execute: async (args: Record<string, unknown>) => {
+          const res = await server.callTool(t.name, args);
+          const textPart = res.content.find((c) => c.type === "text");
+          return textPart?.text || JSON.stringify(res.content);
+        },
+      };
+    }
+
+    return result;
+  }
+
+  /**
    * Disconnect from the server.
    */
   async close(): Promise<void> {
