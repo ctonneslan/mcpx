@@ -13,9 +13,9 @@ No transport configuration. No protocol negotiation. No boilerplate. Just connec
 
 ## Why?
 
-The official MCP SDK is powerful but verbose. Connecting to a server takes 30+ lines of setup code. mcpx wraps it in a clean, ergonomic API so you can focus on building, not configuring.
+The official MCP SDK is powerful but verbose. Connecting to a server takes 30+ lines of setup code. mcpwire wraps it in a clean, ergonomic API so you can focus on building, not configuring.
 
-| | mcpx | Official SDK |
+| | mcpwire | Official SDK |
 |---|------|-------------|
 | Lines to connect | 2 | 15-30+ |
 | Auto transport detection | Yes | Manual |
@@ -153,7 +153,7 @@ Find MCP servers configured on your machine (Claude Desktop, Cursor, etc.).
 
 ## Transports
 
-mcpx automatically handles transport selection:
+mcpwire automatically handles transport selection:
 
 1. **Streamable HTTP** (default) - Recommended for remote servers
 2. **SSE** (fallback) - Legacy HTTP+SSE transport
@@ -170,7 +170,7 @@ Contributions welcome! Please read [CONTRIBUTING.md](CONTRIBUTING.md) first.
 
 ```bash
 git clone https://github.com/ctonneslan/mcpwire.git
-cd mcpx
+cd mcpwire
 npm install
 npm run build
 ```

@@ -1,4 +1,4 @@
-# Contributing to mcpx
+# Contributing to mcpwire
 
 Thanks for wanting to contribute! Here's how to get started.
 
@@ -6,7 +6,7 @@ Thanks for wanting to contribute! Here's how to get started.
 
 ```bash
 git clone https://github.com/ctonneslan/mcpwire.git
-cd mcpx
+cd mcpwire
 npm install
 npm run build
 ```
