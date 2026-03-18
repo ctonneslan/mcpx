@@ -5,7 +5,7 @@ Thanks for wanting to contribute! Here's how to get started.
 ## Setup
 
 ```bash
-git clone https://github.com/ctonneslan/mcpx.git
+git clone https://github.com/ctonneslan/mcpwire.git
 cd mcpx
 npm install
 npm run build

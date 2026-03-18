@@ -1,4 +1,4 @@
-# mcpx
+# mcpwire
 
 **The simplest way to connect to MCP servers.** Two lines to connect. One line to call tools.
 
@@ -169,7 +169,7 @@ const server = await connect(url, { transport: "sse" });
 Contributions welcome! Please read [CONTRIBUTING.md](CONTRIBUTING.md) first.
 
 ```bash
-git clone https://github.com/ctonneslan/mcpx.git
+git clone https://github.com/ctonneslan/mcpwire.git
 cd mcpx
 npm install
 npm run build

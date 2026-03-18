@@ -32,7 +32,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ctonneslan/mcpx.git"
+    "url": "git+https://github.com/ctonneslan/mcpwire.git"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.27.1"
