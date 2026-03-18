@@ -281,11 +281,20 @@ export async function connect(
       });
       await client.connect(transport);
       return new MCPServer(client);
-    } catch {
+    } catch (err) {
       // Fall back to SSE transport
-      transport = new SSEClientTransport(new URL(url), {
-        requestInit: headers ? { headers } : undefined,
-      });
+      try {
+        transport = new SSEClientTransport(new URL(url), {
+          requestInit: headers ? { headers } : undefined,
+        });
+      } catch {
+        throw new Error(
+          `Failed to connect to ${url}. ` +
+          `Tried both Streamable HTTP and SSE transports. ` +
+          `Make sure the server is running and the URL is correct. ` +
+          `Original error: ${(err as Error).message}`
+        );
+      }
     }
   }
 
