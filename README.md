@@ -178,3 +178,31 @@ npm run build
 ## License
 
 MIT
+
+## CLI
+
+Test MCP servers directly from your terminal:
+
+```bash
+# Install globally
+npm install -g mcpwire
+
+# List tools on a server
+mcpwire http://localhost:3000/mcp tools
+
+# Call a tool
+mcpwire http://localhost:3000/mcp call get_weather '{"city":"NYC"}'
+
+# List resources
+mcpwire http://localhost:3000/mcp resources
+
+# Find configured servers
+mcpwire discover
+```
+
+## Changelog
+
+- **0.4.0** - Vercel AI SDK integration (`toolsForVercelAI`), better error messages
+- **0.3.0** - CLI tool (`npx mcpwire`)
+- **0.2.0** - Google Gemini support (`toolsForGemini`)
+- **0.1.0** - Initial release
