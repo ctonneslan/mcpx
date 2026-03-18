@@ -209,6 +209,34 @@ export class MCPServer {
   }
 
   /**
+   * Get tools formatted for Google Gemini's function calling API.
+   *
+   * @example
+   * ```typescript
+   * const tools = await server.toolsForGemini();
+   * const response = await ai.models.generateContent({
+   *   model: "gemini-2.5-flash",
+   *   contents: [{ role: "user", parts: [{ text: "What's the weather?" }] }],
+   *   tools: [{ functionDeclarations: tools }],
+   * });
+   * ```
+   */
+  async toolsForGemini(): Promise<
+    Array<{
+      name: string;
+      description: string;
+      parameters: unknown;
+    }>
+  > {
+    const tools = await this.tools();
+    return tools.map((t) => ({
+      name: t.name,
+      description: t.description || "",
+      parameters: t.inputSchema || { type: "object", properties: {} },
+    }));
+  }
+
+  /**
    * Disconnect from the server.
    */
   async close(): Promise<void> {
